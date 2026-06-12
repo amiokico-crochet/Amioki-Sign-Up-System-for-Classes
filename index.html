@@ -338,7 +338,7 @@
 
     <p class="req-note">Fields marked <span style="color:#F06292">♥</span> are required.</p>
 
-    <form id="signupForm" action="https://formspree.io/f/mdavpojo" method="POST" novalidate>
+    <form id="signupForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
 
       <!-- ── ABOUT YOU ── -->
       <div class="section-heart"><span>♥</span></div>
@@ -479,7 +479,8 @@
         <br><br>
         In the meantime, follow along on Instagram
         <a href="https://instagram.com/amioki.co" style="color:#E0527A;font-weight:800;">@amioki.co</a>
-        for behind-the-scenes and class sneak peeks. 💕
+        💕 Come find us at the Virginia Beach Farmers Market or follow along on Instagram
+        <a href="https://instagram.com/amioki.co" style="color:#E0527A;font-weight:800;">@amioki.co</a>.
       </p>
       <div class="hearts">♥   ♡   ♥   ♡   ♥</div>
     </div>
@@ -514,7 +515,7 @@
   const success = document.getElementById('success');
   const btn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     // validate at least one date
@@ -541,30 +542,33 @@
       if (sourceField) sourceField.value = 'Other: ' + otherVal;
     }
 
-    try {
-      const data = new FormData(form);
-      const resp = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (resp.ok) {
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', form.action);
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
         document.getElementById('confEmail').textContent = email;
         form.style.display = 'none';
         success.style.display = 'block';
         wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        const err = await resp.json();
-        alert('Something went wrong — please email amioki.co@gmail.com directly! 💕\n' + (err.error || ''));
+        try {
+          const err = JSON.parse(xhr.responseText);
+          alert('Something went wrong — please email amioki.co@gmail.com directly! 💕\n' + (err.error || ''));
+        } catch(e) {
+          alert('Something went wrong — please email amioki.co@gmail.com directly! 💕');
+        }
         btn.disabled = false;
         btn.textContent = 'Save My Spot 💕';
       }
-    } catch(err) {
+    };
+    xhr.onerror = function() {
       alert('Connection issue — please email amioki.co@gmail.com directly! 💕');
       btn.disabled = false;
       btn.textContent = 'Save My Spot 💕';
-    }
+    };
+    xhr.send(data);
   });
 </script>
 </body>
