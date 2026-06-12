@@ -3,776 +3,540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amioki Classes 🧶</title>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Amioki · Save Your Spot 🪨🩷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700;800;900&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --pink: #E91E63;
-  --pink-light: #F8BBD9;
-  --pink-pale: #FFF0F8;
-  --pink-mid: #FF69B4;
-  --lavender: #CE93D8;
-  --lavender-deep: #8E24AA;
-  --blush: #FFE0EC;
-  --charcoal: #333333;
-  --white: #ffffff;
-  --heart-open: #E91E63;
-  --heart-filling: #FF9800;
-  --heart-full: #9E9E9E;
-  --heart-keychain-only: #CE93D8;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ── GINGHAM BACKGROUND ── */
+  body {
+    min-height: 100vh;
+    background-color: #FDDDE0;
+    background-image:
+      repeating-linear-gradient(0deg,  rgba(255,255,255,.55) 0, rgba(255,255,255,.55) 18px, transparent 18px, transparent 36px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0, rgba(255,255,255,.55) 18px, transparent 18px, transparent 36px);
+    font-family: 'Nunito','Segoe UI','Trebuchet MS',Arial,sans-serif;
+    padding: 32px 16px 48px;
+  }
 
-body {
-  font-family: 'Quicksand', sans-serif;
-  background: #FFF0F8;
-  min-height: 100vh;
-  color: var(--charcoal);
-  overflow-x: hidden;
-}
+  .wrap { max-width: 560px; margin: 0 auto; }
 
-/* Floating hearts background */
-.bg-hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.bg-heart {
-  position: absolute;
-  opacity: 0.07;
-  animation: floatUp linear infinite;
-  font-size: 24px;
-}
-@keyframes floatUp {
-  0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.07; }
-  90% { opacity: 0.07; }
-  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-}
+  /* ── HEADER ── */
+  .header {
+    background: #FFF6F8;
+    border-radius: 28px 28px 0 0;
+    padding: 30px 24px 0;
+    text-align: center;
+    position: relative;
+  }
 
-/* Header */
-.header {
-  background: linear-gradient(135deg, #E91E63, #FF69B4, #CE93D8);
-  padding: 40px 20px 50px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 30px;
-  background: #FFF0F8;
-  clip-path: ellipse(55% 100% at 50% 100%);
-}
-.header-logo {
-  font-family: 'Comfortaa', cursive;
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.2);
-  letter-spacing: -0.5px;
-}
-.header-logo span { font-size: 2rem; }
-.header-sub {
-  color: rgba(255,255,255,0.92);
-  font-size: 1.05rem;
-  margin-top: 6px;
-  font-weight: 500;
-}
-.header-venue {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.22);
-  border-radius: 20px;
-  padding: 5px 16px;
-  color: white;
-  font-size: 0.88rem;
-  margin-top: 12px;
-  font-weight: 600;
-  backdrop-filter: blur(4px);
-}
+  /* sparkle row */
+  .sparkles {
+    font-size: 13px; color: #FFAEC8; letter-spacing: 10px;
+    line-height: 1; margin-bottom: 8px;
+  }
 
-/* Main container */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 16px 60px;
-  position: relative;
-  z-index: 1;
-}
+  /* ribbon banner */
+  .ribbon {
+    display: inline-block;
+    background: linear-gradient(180deg, #FFCCD8, #F9A8BE);
+    color: #9C3A5B;
+    font-family: 'Comfortaa','Trebuchet MS',cursive,sans-serif;
+    font-weight: 800; font-size: 13px;
+    letter-spacing: .18em; text-transform: uppercase;
+    padding: 9px 28px;
+    border-radius: 6px 14px 6px 14px;
+    box-shadow: 0 4px 12px rgba(249,168,190,.4);
+    border: 2px solid rgba(255,255,255,.7);
+    margin-bottom: 14px;
+  }
 
-/* Legend */
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: white;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(233,30,99,0.1);
-  border: 1.5px solid var(--pink-light);
-}
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+  h1 {
+    font-family: 'Comfortaa','Trebuchet MS',cursive,sans-serif;
+    color: #E0527A;
+    font-size: 30px; font-weight: 900;
+    line-height: 1.2; margin-bottom: 4px;
+  }
+  h1 .dot { color: #FFAEC8; font-size: 22px; vertical-align: middle; }
 
-/* Month nav */
-.month-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-.month-nav button {
-  background: white;
-  border: 2px solid var(--pink-light);
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  color: var(--pink);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.month-nav button:hover { background: var(--pink); color: white; border-color: var(--pink); }
-.month-nav button:disabled { opacity: 0.3; cursor: default; }
-.month-label {
-  font-family: 'Comfortaa', cursive;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--pink);
-  min-width: 180px;
-  text-align: center;
-}
+  .sub {
+    color: #B87090; font-size: 13.5px; font-weight: 700;
+    margin-bottom: 16px;
+  }
 
-/* Calendar grid */
-.cal-grid {
-  background: white;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(233,30,99,0.12);
-  border: 2px solid var(--pink-light);
-  margin-bottom: 24px;
-}
-.cal-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  background: linear-gradient(135deg, #E91E63, #FF69B4);
-}
-.cal-weekday {
-  padding: 10px 4px;
-  text-align: center;
-  color: white;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.cal-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 1px;
-  background: var(--pink-light);
-  border-top: 1px solid var(--pink-light);
-}
-.cal-day {
-  background: white;
-  min-height: 80px;
-  padding: 6px;
-  position: relative;
-  transition: background 0.15s;
-}
-.cal-day.empty { background: #FAFAFA; }
-.cal-day.other-month { background: #FAFAFA; }
-.day-num {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #999;
-  margin-bottom: 3px;
-}
-.cal-day.has-class .day-num { color: var(--charcoal); }
-.cal-day.today .day-num {
-  background: var(--pink);
-  color: white;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.78rem;
-}
+  /* scallop edge */
+  .scallop {
+    height: 20px; margin: 0 -24px;
+    background: radial-gradient(circle at 14px -5px, #FFF6F8 17px, transparent 18px);
+    background-size: 28px 20px;
+    background-repeat: repeat-x;
+  }
 
-/* Class chips on calendar */
-.class-chip {
-  border-radius: 8px;
-  padding: 3px 5px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  margin-bottom: 2px;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  line-height: 1.3;
-  display: block;
-  border: none;
-  width: 100%;
-  text-align: left;
-}
-.class-chip:hover { transform: scale(1.04); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-.chip-open { background: #FCE4EC; color: #C2185B; }
-.chip-filling { background: #FFF3E0; color: #E65100; }
-.chip-full { background: #F5F5F5; color: #757575; cursor: default; }
-.chip-keychain-only { background: #F3E5F5; color: #6A1B9A; }
+  /* ── FORM CARD ── */
+  .card {
+    background: #FFF9FB;
+    border-radius: 0 0 28px 28px;
+    padding: 10px 24px 32px;
+    box-shadow: 0 12px 36px rgba(240,130,170,.18);
+  }
 
-/* Class detail panel */
-.detail-panel {
-  background: white;
-  border-radius: 20px;
-  border: 2px solid var(--pink-light);
-  box-shadow: 0 8px 32px rgba(233,30,99,0.12);
-  padding: 28px;
-  margin-bottom: 24px;
-  display: none;
-  animation: slideIn 0.25s ease;
-}
-.detail-panel.visible { display: block; }
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.detail-close {
-  float: right;
-  background: var(--pink-light);
-  border: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  font-size: 1rem;
-  color: var(--pink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.detail-date {
-  font-family: 'Comfortaa', cursive;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--pink);
-  margin-bottom: 4px;
-}
-.detail-time {
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-}
-.class-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-.class-card {
-  border-radius: 16px;
-  padding: 18px;
-  position: relative;
-  overflow: hidden;
-}
-.class-card.heart { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); border: 2px solid #F48FB1; }
-.class-card.whale { background: linear-gradient(135deg, #EDE7F6, #E1BEE7); border: 2px solid #CE93D8; }
-.class-card.disabled { background: #F5F5F5; border: 2px solid #E0E0E0; opacity: 0.7; }
-.class-card-title {
-  font-family: 'Comfortaa', cursive;
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.class-card.heart .class-card-title { color: #C2185B; }
-.class-card.whale .class-card-title { color: #6A1B9A; }
-.class-card.disabled .class-card-title { color: #9E9E9E; }
-.class-card-price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.class-card.heart .class-card-price { color: var(--pink); }
-.class-card.whale .class-card-price { color: var(--lavender-deep); }
-.class-spots {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.spots-bar {
-  height: 6px;
-  background: rgba(0,0,0,0.1);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 12px;
-}
-.spots-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
-.heart .spots-fill { background: var(--pink); }
-.whale .spots-fill { background: var(--lavender-deep); }
-.btn-signup {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
-  border: none;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  text-align: center;
-}
-.class-card.heart .btn-signup { background: var(--pink); color: white; }
-.class-card.whale .btn-signup { background: var(--lavender-deep); color: white; }
-.class-card.heart .btn-signup:hover { background: #C2185B; transform: translateY(-1px); }
-.class-card.whale .btn-signup:hover { background: #6A1B9A; transform: translateY(-1px); }
-.class-card.disabled .btn-signup { background: #E0E0E0; color: #9E9E9E; cursor: default; }
-.disabled-note {
-  font-size: 0.78rem;
-  color: #9E9E9E;
-  margin-top: 8px;
-  text-align: center;
-}
+  /* section heart label */
+  .section-heart {
+    text-align: center;
+    margin: 20px 0 -12px;
+    position: relative; z-index: 2;
+  }
+  .section-heart span {
+    color: #FFAEC8; font-size: 17px; line-height: 1;
+  }
 
-/* Upcoming list (mobile-friendly fallback) */
-.upcoming-header {
-  font-family: 'Comfortaa', cursive;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--pink);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.upcoming-list { display: flex; flex-direction: column; gap: 10px; }
-.upcoming-item {
-  background: white;
-  border-radius: 14px;
-  border: 1.5px solid var(--pink-light);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(233,30,99,0.07);
-}
-.upcoming-item:hover { border-color: var(--pink); transform: translateX(4px); box-shadow: 0 4px 16px rgba(233,30,99,0.15); }
-.upcoming-date-badge {
-  background: linear-gradient(135deg, var(--pink), var(--pink-mid));
-  color: white;
-  border-radius: 12px;
-  padding: 8px 12px;
-  text-align: center;
-  min-width: 52px;
-  flex-shrink: 0;
-}
-.badge-month { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-.badge-day { font-size: 1.3rem; font-weight: 700; line-height: 1; }
-.upcoming-info { flex: 1; }
-.upcoming-title { font-weight: 700; font-size: 0.92rem; color: var(--charcoal); }
-.upcoming-time { font-size: 0.8rem; color: #888; margin-top: 2px; }
-.upcoming-classes { display: flex; gap: 6px; margin-top: 5px; flex-wrap: wrap; }
-.mini-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-.mini-badge.heart { background: #FCE4EC; color: #C2185B; }
-.mini-badge.whale { background: #F3E5F5; color: #6A1B9A; }
-.mini-badge.keychain-only { background: #F3E5F5; color: #6A1B9A; font-style: italic; }
-.upcoming-arrow { color: var(--pink); font-size: 1.1rem; }
+  /* field groups */
+  .field { margin-bottom: 18px; }
 
-/* Footer note */
-.footer-note {
-  text-align: center;
-  font-size: 0.82rem;
-  color: #aaa;
-  margin-top: 32px;
-  font-weight: 500;
-}
-.footer-note a { color: var(--pink); text-decoration: none; }
+  label {
+    display: block;
+    font-weight: 800; font-size: 13px;
+    color: #C0597C; text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: 6px;
+  }
+  label .req { color: #F06292; margin-left: 2px; }
 
-@media (max-width: 600px) {
-  .header-logo { font-size: 2rem; }
-  .cal-day { min-height: 56px; }
-  .class-chip { font-size: 0.6rem; padding: 2px 3px; }
-  .class-cards { grid-template-columns: 1fr; }
-}
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    background: #FFF0F4;
+    border: 2px solid #F9C8D8;
+    border-radius: 14px;
+    padding: 13px 16px;
+    font-family: 'Nunito','Segoe UI','Trebuchet MS',Arial,sans-serif;
+    font-size: 15px; color: #7A3A52;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none;
+  }
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="tel"]::placeholder,
+  textarea::placeholder { color: #D9A0B4; }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #F06292;
+    box-shadow: 0 0 0 3px rgba(240,98,146,.15);
+  }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F06292' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+
+  /* ── DATE CHECKBOXES ── */
+  .dates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 10px;
+  }
+
+  .date-chip input[type="checkbox"] { display: none; }
+
+  .date-chip label {
+    display: block;
+    background: #FFF0F4;
+    border: 2px solid #F9C8D8;
+    border-radius: 16px;
+    padding: 14px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .18s;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #7A3A52;
+  }
+  .date-chip label:hover {
+    border-color: #F06292;
+    background: #FDE8EF;
+  }
+  .date-chip input:checked + label {
+    background: linear-gradient(135deg, #FDE0EA, #FBBDD0);
+    border-color: #F06292;
+    box-shadow: 0 3px 10px rgba(240,98,146,.25);
+    color: #9C2052;
+  }
+
+  .date-chip .day-name {
+    font-size: 10px; font-weight: 800;
+    color: #F06292; text-transform: uppercase;
+    letter-spacing: .12em; line-height: 1;
+    display: block; margin-bottom: 3px;
+  }
+  .date-chip input:checked + label .day-name { color: #C0406C; }
+
+  .date-chip .date-main {
+    font-family: 'Comfortaa','Trebuchet MS',cursive,sans-serif;
+    font-size: 15px; font-weight: 900;
+    display: block; line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .date-chip .time-str {
+    font-size: 11px; color: #B080A0;
+    display: block;
+  }
+  .date-chip input:checked + label .time-str { color: #9A4068; }
+
+  /* divider */
+  .divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 22px 0 18px;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1;
+    border-top: 1.5px solid #F9C8D8;
+  }
+  .divider span { color: #FFAEC8; font-size: 14px; white-space: nowrap; }
+
+  /* how they heard */
+  .radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .radio-pill input[type="radio"] { display: none; }
+  .radio-pill label {
+    display: inline-block;
+    background: #FFF0F4;
+    border: 2px solid #F9C8D8;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px; font-weight: 700;
+    color: #B08098;
+    cursor: pointer;
+    transition: all .18s;
+    text-transform: none; letter-spacing: 0;
+  }
+  .radio-pill label:hover { border-color: #F06292; color: #9C2052; }
+  .radio-pill input:checked + label {
+    background: linear-gradient(135deg, #FDE0EA, #FBBDD0);
+    border-color: #F06292;
+    color: #9C2052;
+    box-shadow: 0 2px 8px rgba(240,98,146,.2);
+  }
+
+  /* ── SUBMIT BUTTON ── */
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #F472A0, #E91E6B);
+    color: #fff;
+    font-family: 'Comfortaa','Trebuchet MS',cursive,sans-serif;
+    font-weight: 900; font-size: 18px;
+    border: none; border-radius: 999px;
+    padding: 17px 24px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(233,30,107,.35);
+    transition: transform .15s, box-shadow .15s;
+    margin-top: 6px;
+    letter-spacing: .03em;
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 26px rgba(233,30,107,.42);
+  }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:disabled {
+    opacity: .65; cursor: not-allowed; transform: none;
+  }
+
+  .note {
+    text-align: center; color: #C090A8;
+    font-size: 12px; line-height: 1.6;
+    margin-top: 14px;
+  }
+  .note strong { color: #E0527A; }
+
+  /* ── SUCCESS STATE ── */
+  #success {
+    display: none;
+    background: #FFF9FB;
+    border-radius: 28px;
+    padding: 52px 28px;
+    text-align: center;
+    box-shadow: 0 12px 36px rgba(240,130,170,.18);
+  }
+  #success .big-emoji { font-size: 64px; margin-bottom: 14px; }
+  #success h2 {
+    font-family: 'Comfortaa','Trebuchet MS',cursive,sans-serif;
+    color: #E0527A; font-size: 26px; font-weight: 900;
+    margin-bottom: 10px;
+  }
+  #success p { color: #B87090; font-size: 14.5px; line-height: 1.7; }
+  #success .hearts { font-size: 18px; letter-spacing: 8px; margin-top: 18px; color: #FFAEC8; }
+
+  /* ── FOOTER ── */
+  .footer-banner {
+    background: linear-gradient(135deg, #FFCCD8, #F9A8BE);
+    border-radius: 16px;
+    padding: 14px 20px;
+    text-align: center;
+    margin-top: 18px;
+  }
+  .footer-hearts { color: #FFF3F6; font-size: 14px; letter-spacing: 8px; margin-bottom: 6px; }
+  .footer-banner p {
+    color: #8C3558; font-size: 12px;
+    font-weight: 700; line-height: 1.6;
+  }
+  .footer-banner a { color: #FFF0F4; text-decoration: none; }
+
+  /* required note */
+  .req-note { color: #D090A8; font-size: 11.5px; margin-bottom: 20px; font-style: italic; }
+
+  /* info strip */
+  .info-strip {
+    background: #FEE6ED;
+    border: 2px dashed #F9C8D8;
+    border-radius: 18px;
+    padding: 14px 18px;
+    display: flex; gap: 14px; align-items: center;
+    margin-bottom: 22px;
+  }
+  .info-strip .emoji { font-size: 28px; flex-shrink: 0; }
+  .info-strip p { color: #9A5A72; font-size: 13px; line-height: 1.6; }
+  .info-strip strong { color: #E0527A; }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="bg-hearts" id="bgHearts"></div>
-
-<div class="header">
-  <div class="header-logo">🧶 Amioki <span>Classes</span> 💕</div>
-  <div class="header-sub">Cute crochet, piece of cake!</div>
-  <div class="header-venue">📍 Greenbrier Library – Conference Room, Chesapeake VA</div>
-</div>
-
-<div class="container">
-
-  <!-- Legend -->
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#E91E63"></div> Open — sign up!</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#FF9800"></div> Filling up</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#9E9E9E"></div> Full</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#CE93D8"></div> Heart Keychain only</div>
+  <!-- ════ HEADER ════ -->
+  <div class="header">
+    <div class="sparkles">✦ &nbsp;♥&nbsp; ✦ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦ &nbsp;♡&nbsp; ♥</div>
+    <div class="ribbon">♥ &nbsp; Amioki · アミオキ &nbsp; ♥</div>
+    <h1><span class="dot">·</span> Rock Solid Foundation <span class="dot">·</span></h1>
+    <p class="sub">Intro. to Crochet &nbsp;•&nbsp; The Pet Rock Workshop 🪨</p>
+    <div class="scallop"></div>
   </div>
 
-  <!-- Month nav -->
-  <div class="month-nav">
-    <button id="prevBtn" onclick="changeMonth(-1)">&#8592;</button>
-    <div class="month-label" id="monthLabel"></div>
-    <button id="nextBtn" onclick="changeMonth(1)">&#8594;</button>
-  </div>
+  <!-- ════ FORM ════ -->
+  <div class="card" id="formWrap">
 
-  <!-- Calendar -->
-  <div class="cal-grid">
-    <div class="cal-weekdays">
-      <div class="cal-weekday">Sun</div>
-      <div class="cal-weekday">Mon</div>
-      <div class="cal-weekday">Tue</div>
-      <div class="cal-weekday">Wed</div>
-      <div class="cal-weekday">Thu</div>
-      <div class="cal-weekday">Fri</div>
-      <div class="cal-weekday">Sat</div>
+    <!-- info strip -->
+    <div class="section-heart"><span>♥</span></div>
+    <div class="info-strip" style="margin-top:18px;">
+      <span class="emoji">🌸</span>
+      <p>
+        <strong>No payment today!</strong> Reserve your spot, and once your class reaches
+        <strong>3 students</strong>, Ami will personally email you your payment link and
+        class details. 💕
+      </p>
     </div>
-    <div class="cal-days" id="calDays"></div>
+
+    <p class="req-note">Fields marked <span style="color:#F06292">♥</span> are required.</p>
+
+    <form id="signupForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+
+      <!-- ── ABOUT YOU ── -->
+      <div class="section-heart"><span>♥</span></div>
+
+      <div class="field" style="margin-top:18px;">
+        <label>First Name <span class="req">♥</span></label>
+        <input type="text" name="first_name" placeholder="e.g. Sakura" required autocomplete="given-name">
+      </div>
+
+      <div class="field">
+        <label>Last Name <span class="req">♥</span></label>
+        <input type="text" name="last_name" placeholder="e.g. Williams" required autocomplete="family-name">
+      </div>
+
+      <div class="field">
+        <label>Email Address <span class="req">♥</span></label>
+        <input type="email" name="email" placeholder="yourname@email.com" required autocomplete="email">
+        <p style="color:#C090A8;font-size:11.5px;margin-top:5px;padding-left:4px;">This is where your payment link will be sent when class confirms! 🌸</p>
+      </div>
+
+      <!-- ── DATE PICKER ── -->
+      <div class="divider"><span>♥ Choose Your Date(s) ♥</span></div>
+
+      <div class="field">
+        <label>Which date(s) work for you? <span class="req">♥</span></label>
+        <p style="color:#C090A8;font-size:12px;margin-bottom:12px;">Select as many as you'd like — we'll confirm your first available!</p>
+        <div class="dates-grid">
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Tuesday June 16" id="d1">
+            <label for="d1">
+              <span class="day-name">Tuesday</span>
+              <span class="date-main">June 16, 2026</span>
+              <span class="time-str">2:45 PM – 6:45 PM</span>
+            </label>
+          </div>
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Wednesday June 17" id="d2">
+            <label for="d2">
+              <span class="day-name">Wednesday</span>
+              <span class="date-main">June 17, 2026</span>
+              <span class="time-str">2:45 PM – 6:45 PM</span>
+            </label>
+          </div>
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Tuesday June 23" id="d3">
+            <label for="d3">
+              <span class="day-name">Tuesday</span>
+              <span class="date-main">June 23, 2026</span>
+              <span class="time-str">2:45 PM – 6:45 PM</span>
+            </label>
+          </div>
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Thursday June 25" id="d4">
+            <label for="d4">
+              <span class="day-name">Thursday</span>
+              <span class="date-main">June 25, 2026</span>
+              <span class="time-str">2:45 PM – 6:45 PM</span>
+            </label>
+          </div>
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Friday June 26" id="d5">
+            <label for="d5">
+              <span class="day-name">Friday</span>
+              <span class="date-main">June 26, 2026</span>
+              <span class="time-str">12:45 PM – 4:45 PM</span>
+            </label>
+          </div>
+
+          <div class="date-chip">
+            <input type="checkbox" name="dates" value="Saturday July 25" id="d6">
+            <label for="d6">
+              <span class="day-name">Saturday</span>
+              <span class="date-main">July 25, 2026</span>
+              <span class="time-str">12:45 PM – 4:45 PM</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── HOW'D YOU HEAR ── -->
+      <div class="divider"><span>♥ Quick Question ♥</span></div>
+
+      <div class="field" style="margin-top:4px;">
+        <label>How did you hear about us?</label>
+        <div class="radio-group">
+          <div class="radio-pill"><input type="radio" name="source" value="VB Farmers Market" id="s1"><label for="s1">🌿 Farmers Market</label></div>
+          <div class="radio-pill"><input type="radio" name="source" value="Instagram" id="s2"><label for="s2">📷 Instagram</label></div>
+          <div class="radio-pill"><input type="radio" name="source" value="Newsletter" id="s3"><label for="s3">💌 Newsletter</label></div>
+          <div class="radio-pill"><input type="radio" name="source" value="Friend" id="s4"><label for="s4">🩷 A Friend</label></div>
+          <div class="radio-pill"><input type="radio" name="source" value="Other" id="s5"><label for="s5">✨ Other</label></div>
+        </div>
+      </div>
+
+      <!-- ── NOTES ── -->
+      <div class="divider"><span>♥ Anything Else? ♥</span></div>
+
+      <div class="field" style="margin-top:4px;">
+        <label>Questions or notes <span style="color:#D090A8;font-weight:600;font-size:11px;">(optional)</span></label>
+        <textarea name="notes" placeholder="Allergies, accessibility needs, bringing a friend, or just saying hi! 🌸"></textarea>
+      </div>
+
+      <!-- hidden fields -->
+      <input type="hidden" name="_subject" value="🪨 New Pet Rock Workshop Sign-Up!">
+      <input type="hidden" name="_next" value="">
+      <input type="hidden" name="class_name" value="Rock Solid Foundation — Pet Rock Workshop">
+
+      <!-- SUBMIT -->
+      <div class="section-heart"><span>♥</span></div>
+      <button type="submit" class="btn-submit" id="submitBtn" style="margin-top:20px;">
+        Save My Spot 💕
+      </button>
+
+      <p class="note">
+        <strong>$55 per person · every supply included</strong><br>
+        No payment until your class confirms at 3 students.<br>
+        Greenbrier Library – Conference Room, Chesapeake VA 📍
+      </p>
+
+    </form>
+
+    <!-- ════ SUCCESS ════ -->
+    <div id="success">
+      <div class="big-emoji">🪨🩷</div>
+      <h2>You're on the list!</h2>
+      <p>
+        Ami will be in touch at <strong id="confEmail" style="color:#E0527A;"></strong> the
+        moment your class hits 3 students and is confirmed. Keep an eye out for your
+        payment link and all the class details! 🌸
+        <br><br>
+        In the meantime, follow along on Instagram
+        <a href="https://instagram.com/amioki.co" style="color:#E0527A;font-weight:800;">@amioki.co</a>
+        for behind-the-scenes and class sneak peeks. 💕
+      </p>
+      <div class="hearts">♥ &nbsp; ♡ &nbsp; ♥ &nbsp; ♡ &nbsp; ♥</div>
+    </div>
+
   </div>
 
-  <!-- Detail panel -->
-  <div class="detail-panel" id="detailPanel">
-    <button class="detail-close" onclick="closeDetail()">✕</button>
-    <div class="detail-date" id="detailDate"></div>
-    <div class="detail-time" id="detailTime"></div>
-    <div class="class-cards" id="detailCards"></div>
-  </div>
-
-  <!-- Upcoming sessions -->
-  <div class="upcoming-header">✨ All upcoming sessions</div>
-  <div class="upcoming-list" id="upcomingList"></div>
-
-  <div class="footer-note">
-    Schedule subject to change · Questions? <a href="mailto:amioki.co@gmail.com">amioki.co@gmail.com</a><br>
-    💕 All classes held at Greenbrier Library – Conference Room, Chesapeake VA
+  <!-- ════ FOOTER BANNER ════ -->
+  <div class="footer-banner">
+    <div class="footer-hearts">♥ &nbsp; ♡ &nbsp; ♥ &nbsp; ♡ &nbsp; ♥</div>
+    <p>
+      Let's crochet, create, and have the sweetest time together! 🩷<br>
+      <a href="https://instagram.com/amioki.co">@amioki.co</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:amioki.co@gmail.com">amioki.co@gmail.com</a>
+    </p>
   </div>
 
 </div>
 
 <script>
-// ─── CLASS DATA ────────────────────────────────────────────────────────────────
-// To add a new class date: add an entry to CLASS_SESSIONS below.
-// slotType: "long" = Heart Keychain OR Whale Plushie available
-//           "short" = Heart Keychain ONLY (2hr or less)
-// enrollments: { heart: number, whale: number } — update from your Google Sheet
-// ──────────────────────────────────────────────────────────────────────────────
-const CLASS_SESSIONS = [
-  // ── JUNE 2026 ──
-  { date:"2026-06-08", time:"4:00 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-09", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-10", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-11", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-16", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-17", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-23", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-25", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-26", time:"12:45 PM – 4:45 PM",  slotType:"long"  },
-  { date:"2026-06-29", time:"4:00 PM – 6:45 PM",   slotType:"long"  },
-  { date:"2026-06-30", time:"2:45 PM – 6:45 PM",   slotType:"long"  },
-  // ── JULY 2026 ──
-  { date:"2026-07-11", time:"9:45 AM – 11:45 AM",  slotType:"short" },
-  { date:"2026-07-12", time:"1:30 PM – 4:45 PM",   slotType:"long"  },
-  { date:"2026-07-25", time:"12:45 PM – 4:45 PM",  slotType:"long"  },
-  { date:"2026-07-26", time:"1:30 PM – 4:45 PM",   slotType:"long"  },
-  // ── AUGUST 2026 ──
-  { date:"2026-08-01", time:"12:45 PM – 4:45 PM",  slotType:"long"  },
-  { date:"2026-08-02", time:"1:30 PM – 4:45 PM",   slotType:"long"  },
-  { date:"2026-08-04", time:"10:00 AM – 2:00 PM",  slotType:"long"  },
-  { date:"2026-08-05", time:"10:00 AM – 2:00 PM",  slotType:"long"  },
-  { date:"2026-08-06", time:"10:00 AM – 2:00 PM",  slotType:"long"  },
-  { date:"2026-08-08", time:"12:45 PM – 4:45 PM",  slotType:"long"  },
-  { date:"2026-08-09", time:"1:30 PM – 4:45 PM",   slotType:"long"  },
-];
+  const form = document.getElementById('signupForm');
+  const wrap = document.getElementById('formWrap');
+  const success = document.getElementById('success');
+  const btn = document.getElementById('submitBtn');
 
-// ─── CONFIG (swap these in after Square links are ready) ───────────────────
-const CONFIG = {
-  MIN_TO_UNLOCK: 3,
-  CAP: 7,
-  HEART_PRICE: "$35–$45",
-  WHALE_PRICE: "$80–$90",
-  // Replace these with your actual Google Form URL
-  // Pre-fill params: entry.CLASS_TYPE and entry.FIRST_CHOICE will be auto-filled
-  FORM_BASE_URL: "https://docs.google.com/forms/d/e/1FAIpQLSfiNwCHYc4BVty_IqjcvTft5bK3SnWj90uw8iMA02ovbTg6Yg/viewform?usp=dialog",
-  FORM_CLASS_PARAM: "entry.1895090809",
-  FORM_DATE_PARAM:  "entry.1916057166",
-};
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-// ─── ENROLLMENT (pulled from Google Sheet via GAS web app in production) ───
-// For now, initialize all to 0. The GAS script will update a JSON endpoint.
-// Shape: { "2026-06-08": { heart: 0, whale: 0 }, ... }
-let enrollments = {};
-CLASS_SESSIONS.forEach(s => { enrollments[s.date] = { heart: 0, whale: 0 }; });
+    // validate at least one date
+    const checked = form.querySelectorAll('input[name="dates"]:checked');
+    if (!checked.length) {
+      alert('Please pick at least one class date! 🌸');
+      return;
+    }
 
-// ─── STATE ─────────────────────────────────────────────────────────────────
-const today = new Date();
-let currentYear  = today.getFullYear();
-let currentMonth = today.getMonth();
-// Clamp to June 2026 start
-if (currentYear < 2026 || (currentYear === 2026 && currentMonth < 5)) {
-  currentYear = 2026; currentMonth = 5;
-}
-const MONTHS = ["January","February","March","April","May","June",
-                "July","August","September","October","November","December"];
+    // validate required fields
+    const first = form.querySelector('[name="first_name"]').value.trim();
+    const last  = form.querySelector('[name="last_name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    if (!first || !last) { alert('Please enter your full name 💕'); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address 🌸'); return; }
 
-// ─── HELPERS ───────────────────────────────────────────────────────────────
-function sessionByDate(dateStr) {
-  return CLASS_SESSIONS.find(s => s.date === dateStr);
-}
-function toDateStr(y, m, d) {
-  return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-}
-function spotsLeft(type, dateStr) {
-  const e = enrollments[dateStr] || {heart:0, whale:0};
-  return CONFIG.CAP - (type === 'heart' ? e.heart : e.whale);
-}
-function statusFor(type, dateStr) {
-  const e = enrollments[dateStr] || {heart:0, whale:0};
-  const count = type === 'heart' ? e.heart : e.whale;
-  if (count >= CONFIG.CAP) return 'full';
-  if (count >= CONFIG.MIN_TO_UNLOCK - 1) return 'filling';
-  return 'open';
-}
-function formUrl(classType, dateStr) {
-  return `${CONFIG.FORM_BASE_URL}&${CONFIG.FORM_CLASS_PARAM}=${encodeURIComponent(classType)}&${CONFIG.FORM_DATE_PARAM}=${encodeURIComponent(dateStr)}`;
-}
+    btn.disabled = true;
+    btn.textContent = 'Sending… 🌸';
 
-// ─── CALENDAR RENDER ───────────────────────────────────────────────────────
-function renderCalendar() {
-  document.getElementById('monthLabel').textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+    try {
+      const data = new FormData(form);
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
 
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-  let html = '';
-  // Empty cells before first day
-  for (let i = 0; i < firstDay; i++) html += `<div class="cal-day empty"></div>`;
-
-  for (let d = 1; d <= daysInMonth; d++) {
-    const dateStr = toDateStr(currentYear, currentMonth, d);
-    const session  = sessionByDate(dateStr);
-    const isToday  = (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear());
-    const dayClass = ['cal-day', session ? 'has-class' : '', isToday ? 'today' : ''].join(' ').trim();
-
-    let chips = '';
-    if (session) {
-      if (session.slotType === 'short') {
-        const st = statusFor('heart', dateStr);
-        chips += `<button class="class-chip chip-keychain-only ${st === 'full' ? 'chip-full' : ''}" onclick="openDetail('${dateStr}')">💕 Keychain</button>`;
+      if (resp.ok) {
+        document.getElementById('confEmail').textContent = email;
+        form.style.display = 'none';
+        success.style.display = 'block';
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        const hst = statusFor('heart', dateStr);
-        const wst = statusFor('whale', dateStr);
-        const hClass = hst === 'full' ? 'chip-full' : hst === 'filling' ? 'chip-filling' : 'chip-open';
-        const wClass = wst === 'full' ? 'chip-full' : wst === 'filling' ? 'chip-filling' : 'chip-open';
-        chips += `<button class="class-chip ${hClass}" onclick="openDetail('${dateStr}')">💕 Keychain</button>`;
-        chips += `<button class="class-chip ${wClass}" onclick="openDetail('${dateStr}')">🐳 Whale</button>`;
+        const err = await resp.json();
+        alert('Something went wrong — please email amioki.co@gmail.com directly! 💕\n' + (err.error || ''));
+        btn.disabled = false;
+        btn.textContent = 'Save My Spot 💕';
       }
+    } catch(err) {
+      alert('Connection issue — please email amioki.co@gmail.com directly! 💕');
+      btn.disabled = false;
+      btn.textContent = 'Save My Spot 💕';
     }
-
-    const dayNumHtml = isToday
-      ? `<div class="day-num" style="display:flex;align-items:center;justify-content:center;background:#E91E63;color:white;width:22px;height:22px;border-radius:50%;font-size:0.75rem;">${d}</div>`
-      : `<div class="day-num">${d}</div>`;
-
-    html += `<div class="${dayClass}">${dayNumHtml}${chips}</div>`;
-  }
-
-  // Fill remaining cells
-  const totalCells = firstDay + daysInMonth;
-  const remainder  = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-  for (let i = 0; i < remainder; i++) html += `<div class="cal-day empty"></div>`;
-
-  document.getElementById('calDays').innerHTML = html;
-
-  // Nav buttons
-  const minMonth = 5, minYear = 2026;
-  const maxMonth = 7, maxYear = 2026;
-  document.getElementById('prevBtn').disabled = (currentYear === minYear && currentMonth === minMonth);
-  document.getElementById('nextBtn').disabled = (currentYear === maxYear && currentMonth === maxMonth);
-}
-
-function changeMonth(dir) {
-  currentMonth += dir;
-  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-  if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
-  closeDetail();
-  renderCalendar();
-}
-
-// ─── DETAIL PANEL ──────────────────────────────────────────────────────────
-function openDetail(dateStr) {
-  const session = sessionByDate(dateStr);
-  if (!session) return;
-
-  const d    = new Date(dateStr + 'T12:00:00');
-  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-  document.getElementById('detailDate').textContent = d.toLocaleDateString('en-US', opts);
-  document.getElementById('detailTime').textContent = `🕐 ${session.time} · Greenbrier Library – Conference Room`;
-
-  let cardsHtml = '';
-
-  // Heart Keychain card (always shown)
-  const hSpotsLeft = spotsLeft('heart', dateStr);
-  const hFill      = Math.round(((CONFIG.CAP - hSpotsLeft) / CONFIG.CAP) * 100);
-  const hSt        = statusFor('heart', dateStr);
-  const hBtnLabel  = hSt === 'full' ? '💔 Full — join waitlist' : '💕 Sign up — Heart Keychain';
-  const hBtnUrl    = formUrl('Heart Keychain', dateStr);
-  cardsHtml += `
-    <div class="class-card heart">
-      <div class="class-card-title">💕 Heart Keychain Workshop</div>
-      <div class="class-card-price">${CONFIG.HEART_PRICE}</div>
-      <div class="class-spots">${hSt === 'full' ? '😢 Full!' : `${hSpotsLeft} of ${CONFIG.CAP} spots left`}</div>
-      <div class="spots-bar"><div class="spots-fill" style="width:${hFill}%"></div></div>
-      <a href="${hBtnUrl}" target="_blank" class="btn-signup ${hSt === 'full' ? '' : ''}">${hBtnLabel}</a>
-    </div>`;
-
-  // Whale Plushie card
-  if (session.slotType === 'short') {
-    cardsHtml += `
-      <div class="class-card disabled">
-        <div class="class-card-title">🐳 Whale Plushie Workshop</div>
-        <div class="class-card-price">${CONFIG.WHALE_PRICE}</div>
-        <div class="class-spots" style="color:#bbb">Requires 3+ hour slot</div>
-        <div class="spots-bar"><div class="spots-fill" style="width:0%;background:#ccc"></div></div>
-        <button class="btn-signup" disabled>Not available this slot</button>
-        <div class="disabled-note">Available on 3–4 hr sessions 🐳</div>
-      </div>`;
-  } else {
-    const wSpotsLeft = spotsLeft('whale', dateStr);
-    const wFill      = Math.round(((CONFIG.CAP - wSpotsLeft) / CONFIG.CAP) * 100);
-    const wSt        = statusFor('whale', dateStr);
-    const wBtnLabel  = wSt === 'full' ? '😢 Full — join waitlist' : '🐳 Sign up — Whale Plushie';
-    const wBtnUrl    = formUrl('Whale Plushie', dateStr);
-    cardsHtml += `
-      <div class="class-card whale">
-        <div class="class-card-title">🐳 Whale Plushie Workshop</div>
-        <div class="class-card-price">${CONFIG.WHALE_PRICE}</div>
-        <div class="class-spots">${wSt === 'full' ? '😢 Full!' : `${wSpotsLeft} of ${CONFIG.CAP} spots left`}</div>
-        <div class="spots-bar"><div class="spots-fill" style="width:${wFill}%"></div></div>
-        <a href="${wBtnUrl}" target="_blank" class="btn-signup">${wBtnLabel}</a>
-      </div>`;
-  }
-
-  document.getElementById('detailCards').innerHTML = cardsHtml;
-  const panel = document.getElementById('detailPanel');
-  panel.classList.add('visible');
-  panel.scrollIntoView({ behavior:'smooth', block:'nearest' });
-}
-
-function closeDetail() {
-  document.getElementById('detailPanel').classList.remove('visible');
-}
-
-// ─── UPCOMING LIST ─────────────────────────────────────────────────────────
-function renderUpcoming() {
-  const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
-  const future   = CLASS_SESSIONS.filter(s => s.date >= todayStr).slice(0, 12);
-
-  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  let html = '';
-  future.forEach(s => {
-    const d   = new Date(s.date + 'T12:00:00');
-    const mon = monthNames[d.getMonth()];
-    const day = d.getDate();
-
-    let badges = '';
-    if (s.slotType === 'short') {
-      badges = `<span class="mini-badge keychain-only">💕 Heart Keychain only</span>`;
-    } else {
-      const hSt = statusFor('heart', s.date);
-      const wSt = statusFor('whale', s.date);
-      badges = `<span class="mini-badge heart">💕 Keychain ${hSt === 'full' ? '(full)' : ''}</span>
-                <span class="mini-badge whale">🐳 Whale ${wSt === 'full' ? '(full)' : ''}</span>`;
-    }
-
-    html += `
-      <div class="upcoming-item" onclick="showMonth('${s.date}')">
-        <div class="upcoming-date-badge">
-          <div class="badge-month">${mon}</div>
-          <div class="badge-day">${day}</div>
-        </div>
-        <div class="upcoming-info">
-          <div class="upcoming-title">Amioki Intro to Crochet</div>
-          <div class="upcoming-time">${s.time}</div>
-          <div class="upcoming-classes">${badges}</div>
-        </div>
-        <div class="upcoming-arrow">→</div>
-      </div>`;
   });
-  document.getElementById('upcomingList').innerHTML = html || '<p style="color:#aaa;text-align:center;padding:20px">No upcoming sessions — check back soon! 💕</p>';
-}
-
-function showMonth(dateStr) {
-  const d = new Date(dateStr + 'T12:00:00');
-  currentYear  = d.getFullYear();
-  currentMonth = d.getMonth();
-  renderCalendar();
-  openDetail(dateStr);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// ─── BACKGROUND HEARTS ─────────────────────────────────────────────────────
-function spawnHearts() {
-  const container = document.getElementById('bgHearts');
-  const symbols   = ['💕','🌸','✨','💖','🩷'];
-  for (let i = 0; i < 18; i++) {
-    const el = document.createElement('div');
-    el.className = 'bg-heart';
-    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    el.style.left   = Math.random() * 100 + '%';
-    el.style.animationDuration = (10 + Math.random() * 15) + 's';
-    el.style.animationDelay    = (Math.random() * 15) + 's';
-    el.style.fontSize           = (14 + Math.random() * 16) + 'px';
-    container.appendChild(el);
-  }
-}
-
-// ─── INIT ──────────────────────────────────────────────────────────────────
-spawnHearts();
-renderCalendar();
-renderUpcoming();
 </script>
 </body>
 </html>
