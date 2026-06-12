@@ -502,73 +502,12 @@
 
 <script>
   // Other source reveal
-  document.querySelectorAll('input[name="source"]').forEach(radio => {
+  document.querySelectorAll('input[name="source"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
-      const wrap = document.getElementById('otherWrap');
+      var wrap = document.getElementById('otherWrap');
       wrap.style.display = this.value === 'Other' ? 'block' : 'none';
       if (this.value !== 'Other') document.getElementById('otherInput').value = '';
     });
-  });
-
-  const form = document.getElementById('signupForm');
-  const wrap = document.getElementById('formWrap');
-  const success = document.getElementById('success');
-  const btn = document.getElementById('submitBtn');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // validate at least one date
-    const checked = form.querySelectorAll('input[name="dates"]:checked');
-    if (!checked.length) {
-      alert('Please pick at least one class date! 🌸');
-      return;
-    }
-
-    // validate required fields
-    const first = form.querySelector('[name="first_name"]').value.trim();
-    const last  = form.querySelector('[name="last_name"]').value.trim();
-    const email = form.querySelector('[name="email"]').value.trim();
-    if (!first || !last) { alert('Please enter your full name 💕'); return; }
-    if (!email || !email.includes('@')) { alert('Please enter a valid email address 🌸'); return; }
-
-    btn.disabled = true;
-    btn.textContent = 'Sending… 🌸';
-
-    // if Other selected, append the typed value
-    const otherVal = document.getElementById('otherInput').value.trim();
-    if (otherVal) {
-      const sourceField = form.querySelector('[name="source"]:checked');
-      if (sourceField) sourceField.value = 'Other: ' + otherVal;
-    }
-
-    const data = new FormData(form);
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', form.action);
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        document.getElementById('confEmail').textContent = email;
-        form.style.display = 'none';
-        success.style.display = 'block';
-        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        try {
-          const err = JSON.parse(xhr.responseText);
-          alert('Something went wrong — please email amioki.co@gmail.com directly! 💕\n' + (err.error || ''));
-        } catch(e) {
-          alert('Something went wrong — please email amioki.co@gmail.com directly! 💕');
-        }
-        btn.disabled = false;
-        btn.textContent = 'Save My Spot 💕';
-      }
-    };
-    xhr.onerror = function() {
-      alert('Connection issue — please email amioki.co@gmail.com directly! 💕');
-      btn.disabled = false;
-      btn.textContent = 'Save My Spot 💕';
-    };
-    xhr.send(data);
   });
 </script>
 </body>
