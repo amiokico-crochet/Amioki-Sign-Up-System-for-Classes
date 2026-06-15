@@ -850,6 +850,12 @@
     }
   }
 
+  const savedUrl = localStorage.getItem("amioki_gas_url");
+  if (savedUrl) {
+    document.getElementById("gasUrl").value = savedUrl;
+    document.getElementById("gasStatus").innerHTML = "<div class=\"status-msg status-ok\">✓ GAS URL loaded from last session.<\/div>";
+  }
+
   addItemRow();
 </script>
 </body>
